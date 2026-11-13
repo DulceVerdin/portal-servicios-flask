@@ -1,31 +1,31 @@
 # Ciclo técnico de una compra
 
-Cuando el empleado, como **cliente** de la aplicación, escribe
+Cuando el empleado, como *cliente* de la aplicación, escribe
 `http://127.0.0.1:5000/compra` en el navegador, este utiliza la
-**dirección IP** `127.0.0.1` para localizar el equipo y el **puerto** `5000`
+**dirección IP** `127.0.0.1` para localizar el equipo y el *puerto* `5000`
 para establecer la comunicación. El navegador prepara una solicitud
-**HTTP**. Al abrir la página, envía una petición `GET` a la aplicación.
+*HTTP*. Al abrir la página, envía una petición `GET` a la aplicación.
 
-El **servidor** ejecuta el **backend**, desarrollado en **Python** con
-**Flask**, y busca la **ruta** `/compra`. La ruta recibe la petición `GET` y
-renderiza el **template** `compra.html`, que compone el **frontend**. El
-**HTML** define los campos del formulario, mientras que **CSS** y
-**Bootstrap** dan estilo y estructura a la página. **JavaScript** solo
+El *servidor* ejecuta el *backend*, desarrollado en *Python* con
+*Flask*, y busca la *ruta* `/compra`. La ruta recibe la petición `GET` y
+renderiza el *template* `compra.html`, que compone el *frontend*. El
+*HTML* define los campos del formulario, mientras que **CSS** y
+*Bootstrap* dan estilo y estructura a la página.  solo
 interviene en componentes visuales de Bootstrap, como el menú adaptable, y no
 participa en el cálculo.
 
 El empleado ingresa la cantidad y el precio unitario y envía el formulario.
-El navegador crea un **request** con método **POST** que contiene esos valores.
+El navegador crea un *request* con método *POST* que contiene esos valores.
 Flask recibe los datos en la misma ruta, valida que sean números válidos y no
 negativos, y calcula el subtotal. Si el subtotal es mayor que $1000, aplica un
 descuento del 10%; de lo contrario, el descuento es cero.
 
 Con los resultados calculados, Flask renderiza de nuevo el template y prepara
-una **response** HTTP con la página actualizada. El navegador interpreta el
+una *response* HTTP con la página actualizada. El navegador interpreta el
 HTML y muestra la cantidad, el precio unitario, el subtotal, el descuento y
 el total al empleado.
 
-## Diagrama del flujo
+
 
 ```mermaid
 flowchart LR
@@ -38,26 +38,5 @@ flowchart LR
 El navegador envía los datos mediante `POST`; Flask procesa el cálculo en el
 servidor y devuelve la página renderizada con el resultado visible.
 
-## Evidencias e interpretación de pruebas
 
-Las capturas de los casos ejecutados se encuentran en `evidencias/`:
 
-### Compra
-
-![Evidencia de la calculadora de compra](evidencias/calculo_de_compra.png)
-
-Con 5 productos a $250, el subtotal es $1250. Se aplica un descuento de $125
-y el total es $1125.
-
-### Salario
-
-![Evidencia de la calculadora de salario](evidencias/calculo_de_salario.png)
-
-Con 45 horas a $100 por hora, las primeras 40 horas generan $4000 y las 5
-horas extra, pagadas al doble, generan $1000. El salario total es $5000.
-
-### Temperatura
-
-![Evidencia del conversor de temperatura](evidencias/calculo_de_temperatura.png)
-
-Al convertir 25 °C, el resultado es 77 °F y 298.15 K.
