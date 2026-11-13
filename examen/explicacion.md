@@ -40,11 +40,24 @@ servidor y devuelve la página renderizada con el resultado visible.
 
 ## Evidencias e interpretación de pruebas
 
-Agrega las capturas correspondientes en `examen/evidencias/` y enlázalas aquí.
-Los casos esperados son:
+Las capturas de los casos ejecutados se encuentran en `evidencias/`:
 
-- **Compra:** 5 productos a $250 dan un subtotal de $1250. Se aplica un
-  descuento de $125 y el total es $1125.
-- **Salario:** 45 horas a $100 por hora generan $4000 por las primeras 40 horas
-  y $1000 por las 5 horas extra. El salario total es $5000.
-- **Temperatura:** 25 °C equivalen a 77 °F y 298.15 K.
+### Compra
+
+![Evidencia de la calculadora de compra](evidencias/calculo_de_compra.png)
+
+Con 5 productos a $250, el subtotal es $1250. Se aplica un descuento de $125
+y el total es $1125.
+
+### Salario
+
+![Evidencia de la calculadora de salario](evidencias/calculo_de_salario.png)
+
+Con 45 horas a $100 por hora, las primeras 40 horas generan $4000 y las 5
+horas extra, pagadas al doble, generan $1000. El salario total es $5000.
+
+### Temperatura
+
+![Evidencia del conversor de temperatura](evidencias/calculo_de_temperatura.png)
+
+Al convertir 25 °C, el resultado es 77 °F y 298.15 K.
