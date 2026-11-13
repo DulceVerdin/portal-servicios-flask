@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de compra | Portal de Servicios{% endblock %}
+
+{% block content %}
+<section class="mx-auto" style="max-width: 700px;">
+  <h1 class="mb-3">Calculadora de compra</h1>
+  <p>Ingresa la cantidad y el precio unitario para calcular el total.</p>
+
+  {% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST" action="{{ url_for('compra') }}" class="card card-body shadow-sm">
+    <div class="mb-3">
+      <label for="cantidad" class="form-label">Cantidad</label>
+      <input type="number" class="form-control" id="cantidad" name="cantidad"
+             min="0" step="any" value="{{ datos.get('cantidad', '') }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="precio_unitario" class="form-label">Precio unitario</label>
+      <input type="number" class="form-control" id="precio_unitario"
+             name="precio_unitario" min="0" step="any"
+             value="{{ datos.get('precio_unitario', '') }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular compra</button>
+  </form>
+
+  {% if resultado %}
+    <section class="card mt-4 border-success" aria-labelledby="resultado-titulo">
+      <div class="card-body">
+        <h2 id="resultado-titulo" class="h4">Resultado</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cantidad ingresada: {{ resultado.cantidad }}</li>
+          <li class="list-group-item">Precio unitario: ${{ resultado.precio_unitario }}</li>
+          <li class="list-group-item">Subtotal: ${{ resultado.subtotal }}</li>
+          <li class="list-group-item">Descuento: ${{ resultado.descuento }}</li>
+          <li class="list-group-item fw-bold">Total: ${{ resultado.total }}</li>
+        </ul>
+        <p class="small text-muted mt-3 mb-0">
+          Se aplica un descuento del 10% cuando el subtotal es mayor que $1000.
+        </p>
+      </div>
+    </section>
+  {% endif %}
+</section>
+{% endblock %}

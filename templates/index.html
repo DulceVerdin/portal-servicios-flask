@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Portal de Servicios | Inicio{% endblock %}
+
+{% block content %}
+<section class="row align-items-center g-4 mb-5">
+  <div class="col-lg-6">
+    <h1 class="display-5 fw-bold">Portal de Servicios</h1>
+    <p class="lead">
+      Bienvenido a nuestro portal. Conoce nuestra empresa de tecnología,
+      explora los servicios disponibles y utiliza herramientas prácticas para
+      realizar cálculos cotidianos.
+    </p>
+    <a class="btn btn-primary" href="{{ url_for('servicios') }}">Conoce nuestros servicios</a>
+  </div>
+  <div class="col-lg-6">
+    <img
+      src="{{ url_for('static', filename='img/banner1.jpg') }}"
+      class="img-fluid rounded shadow hero-img w-100"
+      alt="Espacio de trabajo compartido con computadoras y escritorios"
+    >
+  </div>
+</section>
+
+<section aria-labelledby="galeria-titulo">
+  <h2 id="galeria-titulo" class="h3 mb-3">Nuestra galería</h2>
+  <div id="carruselPortal" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carruselPortal" data-bs-slide-to="0"
+              class="active" aria-current="true" aria-label="Imagen 1"></button>
+      <button type="button" data-bs-target="#carruselPortal" data-bs-slide-to="1"
+              aria-label="Imagen 2"></button>
+      <button type="button" data-bs-target="#carruselPortal" data-bs-slide-to="2"
+              aria-label="Imagen 3"></button>
+    </div>
+
+    <div class="carousel-inner rounded">
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='img/banner1.jpg') }}"
+             class="d-block w-100 carousel-img" alt="Espacio de trabajo compartido">
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='img/banner2.jpg') }}"
+             class="d-block w-100 carousel-img" alt="Gráfico de ingresos, gastos y ganancias">
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='img/banner3.jpg') }}"
+             class="d-block w-100 carousel-img" alt="Personal de soporte atendiendo a un cliente">
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carruselPortal"
+            data-bs-slide="prev" aria-label="Anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carruselPortal"
+            data-bs-slide="next" aria-label="Siguiente">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</section>
+{% endblock %}

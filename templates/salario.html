@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de salario | Portal de Servicios{% endblock %}
+
+{% block content %}
+<section class="mx-auto" style="max-width: 700px;">
+  <h1 class="mb-3">Calculadora de salario</h1>
+  <p>Las primeras 40 horas se pagan normalmente; las horas excedentes se pagan al doble.</p>
+
+  {% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST" action="{{ url_for('salario') }}" class="card card-body shadow-sm">
+    <div class="mb-3">
+      <label for="horas" class="form-label">Horas trabajadas</label>
+      <input type="number" class="form-control" id="horas" name="horas"
+             min="0" step="any" value="{{ datos.get('horas', '') }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="pago_por_hora" class="form-label">Pago por hora</label>
+      <input type="number" class="form-control" id="pago_por_hora"
+             name="pago_por_hora" min="0" step="any"
+             value="{{ datos.get('pago_por_hora', '') }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular salario</button>
+  </form>
+
+  {% if resultado %}
+    <section class="card mt-4 border-success" aria-labelledby="resultado-titulo">
+      <div class="card-body">
+        <h2 id="resultado-titulo" class="h4">Desglose del salario</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Horas ingresadas: {{ resultado.horas }}</li>
+          <li class="list-group-item">Pago por hora: ${{ resultado.pago_por_hora }}</li>
+          <li class="list-group-item">
+            Horas normales: {{ resultado.horas_normales }} · Pago normal: ${{ resultado.pago_normal }}
+          </li>
+          <li class="list-group-item">
+            Horas extra: {{ resultado.horas_extra }} · Pago extra: ${{ resultado.pago_extra }}
+          </li>
+          <li class="list-group-item fw-bold">Salario total: ${{ resultado.total }}</li>
+        </ul>
+      </div>
+    </section>
+  {% endif %}
+</section>
+{% endblock %}

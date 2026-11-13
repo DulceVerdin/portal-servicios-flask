@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Servicios | Portal de Servicios{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Nuestros servicios</h1>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <article class="card h-100 shadow-sm">
+      <img src="{{ url_for('static', filename='img/banner1.jpg') }}"
+           class="card-img-top service-img" alt="Desarrollo de software">
+      <div class="card-body">
+        <h2 class="h5 card-title">Desarrollo de software</h2>
+        <p class="card-text">
+          Diseño y construcción de aplicaciones web adaptadas a las necesidades de cada cliente.
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <div class="col-md-4">
+    <article class="card h-100 shadow-sm">
+      <img src="{{ url_for('static', filename='img/banner2.jpg') }}"
+           class="card-img-top service-img" alt="Consultoría tecnológica">
+      <div class="card-body">
+        <h2 class="h5 card-title">Consultoría tecnológica</h2>
+        <p class="card-text">
+          Orientación para seleccionar herramientas y mejorar procesos mediante tecnología.
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <div class="col-md-4">
+    <article class="card h-100 shadow-sm">
+      <img src="{{ url_for('static', filename='img/banner3.jpg') }}"
+           class="card-img-top service-img" alt="Soporte y mantenimiento">
+      <div class="card-body">
+        <h2 class="h5 card-title">Soporte y mantenimiento</h2>
+        <p class="card-text">
+          Asistencia para mantener sistemas y aplicaciones en funcionamiento.
+        </p>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock %}

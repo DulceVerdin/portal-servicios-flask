@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Conversor de temperatura | Portal de Servicios{% endblock %}
+
+{% block content %}
+<section class="mx-auto" style="max-width: 700px;">
+  <h1 class="mb-3">Conversor de temperatura</h1>
+  <p>Ingresa grados Celsius para convertirlos a Fahrenheit y Kelvin.</p>
+
+  {% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST" action="{{ url_for('temperatura') }}" class="card card-body shadow-sm">
+    <div class="mb-3">
+      <label for="celsius" class="form-label">Grados Celsius</label>
+      <input type="number" class="form-control" id="celsius" name="celsius"
+             step="any" value="{{ datos.get('celsius', '') }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Convertir temperatura</button>
+  </form>
+
+  {% if resultado %}
+    <section class="card mt-4 border-success" aria-labelledby="resultado-titulo">
+      <div class="card-body">
+        <h2 id="resultado-titulo" class="h4">Resultado</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Celsius ingresados: {{ resultado.celsius }} °C</li>
+          <li class="list-group-item">Fahrenheit: {{ resultado.fahrenheit }} °F</li>
+          <li class="list-group-item">Kelvin: {{ resultado.kelvin }} K</li>
+        </ul>
+      </div>
+    </section>
+  {% endif %}
+</section>
+{% endblock %}
