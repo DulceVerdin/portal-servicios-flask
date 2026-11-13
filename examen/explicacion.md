@@ -1,31 +1,31 @@
+# Ciclo técnico de una compra
 
-
-Cuando el empleado, como cliente de la aplicación, escribe en el navegador
-la dirección `http://127.0.0.1:5000`, el navegador utiliza la
-**dirección IP** `127.0.0.1` para localizar el equipo y el *puerto* `5000`
+Cuando el empleado, como **cliente** de la aplicación, escribe
+`http://127.0.0.1:5000/compra` en el navegador, este utiliza la
+**dirección IP** `127.0.0.1` para localizar el equipo y el **puerto** `5000`
 para establecer la comunicación. El navegador prepara una solicitud
-*HTTP*. En el primer acceso a la página, esa solicitud es un `GET` dirigido
-a la aplicación.
+**HTTP**. Al abrir la página, envía una petición `GET` a la aplicación.
 
-El *servidor* ejecuta el *backend*, desarrollado en *Python* con
-*Flask*, y busca la *ruta* `/compra`. La ruta recibe la petición `GET` y
-renderiza el *template* `compra.html`, que forma parte del *frontend*. El
-*HTML* define los campos del formulario; el *CSS* y *Bootstrap* dan
-estilo y estructura a la página.  solo interviene en componentes
-visuales de Bootstrap, como el menú adaptable, y no participa en el cálculo.
+El **servidor** ejecuta el **backend**, desarrollado en **Python** con
+**Flask**, y busca la **ruta** `/compra`. La ruta recibe la petición `GET` y
+renderiza el **template** `compra.html`, que compone el **frontend**. El
+**HTML** define los campos del formulario, mientras que **CSS** y
+**Bootstrap** dan estilo y estructura a la página. **JavaScript** solo
+interviene en componentes visuales de Bootstrap, como el menú adaptable, y no
+participa en el cálculo.
 
 El empleado ingresa la cantidad y el precio unitario y envía el formulario.
-El navegador crea un *request* con método *POST* que contiene esos valores.
-Flask recibe el envío en la misma ruta, valida que ambos datos sean números
-válidos y no negativos, y calcula el subtotal. Si el subtotal es mayor que
-$1000, aplica un descuento del 10%; de lo contrario, el descuento es cero.
+El navegador crea un **request** con método **POST** que contiene esos valores.
+Flask recibe los datos en la misma ruta, valida que sean números válidos y no
+negativos, y calcula el subtotal. Si el subtotal es mayor que $1000, aplica un
+descuento del 10%; de lo contrario, el descuento es cero.
 
-Con esos resultados, Flask renderiza de nuevo el template y prepara una
-*response* HTTP con la página actualizada. El navegador interpreta el HTML y
-muestra la cantidad, el precio unitario, el subtotal, el descuento y el total
-al empleado.
+Con los resultados calculados, Flask renderiza de nuevo el template y prepara
+una **response** HTTP con la página actualizada. El navegador interpreta el
+HTML y muestra la cantidad, el precio unitario, el subtotal, el descuento y
+el total al empleado.
 
-# Diagrama del flujo
+## Diagrama del flujo
 
 ```mermaid
 flowchart LR
@@ -36,7 +36,15 @@ flowchart LR
 ```
 
 El navegador envía los datos mediante `POST`; Flask procesa el cálculo en el
-servidor y devuelve la página  con el resultado visible.
+servidor y devuelve la página renderizada con el resultado visible.
 
+## Evidencias e interpretación de pruebas
 
+Agrega las capturas correspondientes en `examen/evidencias/` y enlázalas aquí.
+Los casos esperados son:
 
+- **Compra:** 5 productos a $250 dan un subtotal de $1250. Se aplica un
+  descuento de $125 y el total es $1125.
+- **Salario:** 45 horas a $100 por hora generan $4000 por las primeras 40 horas
+  y $1000 por las 5 horas extra. El salario total es $5000.
+- **Temperatura:** 25 °C equivalen a 77 °F y 298.15 K.
